@@ -114,6 +114,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6F56C9928A65310001D340A /* Build configuration list for PBXNativeTarget "GameStore" */;
 			buildPhases = (
+				A6F56CA128A6586F001D340A /* Run SwiftLint */,
 				A6F56C8728A6530D001D340A /* Sources */,
 				A6F56C8828A6530D001D340A /* Frameworks */,
 				A6F56C8928A6530D001D340A /* Resources */,
@@ -171,6 +172,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A6F56CA128A6586F001D340A /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A6F56C8728A6530D001D340A /* Sources */ = {
