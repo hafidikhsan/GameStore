@@ -37,7 +37,7 @@ struct TabBarView: View {
                         }
                         .frame(maxWidth: .infinity)
                     }
-                    .foregroundColor(selectedItem == item.tab ? Color.red : Color.gray)
+                    .foregroundColor(selectedItem == item.tab ? Color.blue : Color.gray)
                 }
             }
             .padding(.horizontal, 5)
