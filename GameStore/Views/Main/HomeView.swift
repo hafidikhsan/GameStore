@@ -29,6 +29,7 @@ struct HomeView: View {
                 NavigationView {
                     ZStack(alignment: .top) {
                         Color("PrimaryColor")
+                            .frame(height: 500)
                         ScrollView {
                             GeometryReader { reader in
                                 let value = reader.frame(in: .global).minY / 2
