@@ -15,7 +15,7 @@ struct TabBarProperties: Identifiable {
 }
 
 let tabBarProperties: [TabBarProperties] = [
-    TabBarProperties(tab: .home, icon: "house.fill", text: "Home"),
-    TabBarProperties(tab: .search, icon: "magnifyingglass", text: "Search"),
-    TabBarProperties(tab: .account, icon: "person.fill", text: "Account")
+    TabBarProperties(tab: .home, icon: "HomeIcon", text: "Home"),
+    TabBarProperties(tab: .search, icon: "SearchIcon", text: "Search"),
+    TabBarProperties(tab: .account, icon: "AccountIcon", text: "Account")
 ]

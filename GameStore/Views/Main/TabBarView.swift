@@ -28,7 +28,8 @@ struct TabBarView: View {
                         self.selectedItem = item.tab
                     } label: {
                         VStack(spacing: 5) {
-                            Image(systemName: item.icon)
+                            Image(item.icon)
+                                .renderingMode(.template)
                                 .resizable()
                                 .frame(width: 25, height: 25)
                             Text(item.text)
@@ -37,7 +38,7 @@ struct TabBarView: View {
                         }
                         .frame(maxWidth: .infinity)
                     }
-                    .foregroundColor(selectedItem == item.tab ? Color.blue : Color.gray)
+                    .foregroundColor(selectedItem == item.tab ? Color("PrimaryColor") : Color.gray)
                 }
             }
             .padding(.horizontal, 5)

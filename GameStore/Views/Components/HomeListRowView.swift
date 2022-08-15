@@ -31,7 +31,7 @@ struct HomeListRowView: View {
                 VStack {
                     Spacer()
                     ZStack {
-                        Color.blue
+                        Color("PrimaryColor")
                         Text("Install")
                             .font(.headline.weight(.medium))
                             .lineLimit(1)

@@ -8,12 +8,24 @@
 import SwiftUI
 
 struct HomeView: View {
+    let navBarAppearance = UINavigationBarAppearance()
+    init() {
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.backgroundColor = UIColor(Color("PrimaryColor"))
+        navBarAppearance.shadowColor = .clear
+        UINavigationBar.appearance().standardAppearance = navBarAppearance
+        UINavigationBar.appearance().tintColor = .clear
+    }
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
-                Color.white
+                Color("PrimaryColor")
                 ScrollView {
-                    HomeBackgroundView()
+                    GeometryReader { reader in
+                        let value = reader.frame(in: .global).minY / 2
+                        HomeBackgroundView(zoomValue: .constant(value))
+                    }.frame(height: 300)
                     VStack(alignment: .leading) {
                         HomeMenuView()
                         Text("Newest Game")
@@ -35,7 +47,7 @@ struct HomeView: View {
                 }.ignoresSafeArea()
             }
             .ignoresSafeArea()
-            .navigationTitle("Home")
+            .navigationTitle("Game Store")
         }
         .navigationViewStyle(.stack)
     }
