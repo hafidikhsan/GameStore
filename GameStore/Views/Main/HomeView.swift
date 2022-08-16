@@ -9,14 +9,15 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var services = Services()
-    let navBarAppearance = UINavigationBarAppearance()
     init() {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithTransparentBackground()
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         navBarAppearance.backgroundColor = UIColor(Color("PrimaryColor"))
         navBarAppearance.shadowColor = .clear
         UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().tintColor = .clear
+        UINavigationBar.appearance().tintColor = .white
     }
     var body: some View {
         switch services.status {
@@ -36,7 +37,18 @@ struct HomeView: View {
                                 HomeBackgroundView(zoomValue: .constant(value))
                             }.frame(height: 300)
                             VStack(alignment: .leading) {
-                                HomeMenuView()
+                                HStack {
+                                    ForEach(menuProperties) { item in
+                                        NavigationLink(destination: MenuListView(
+                                            genre: item.text,
+                                            value: item.value
+                                        )) {
+                                            HomeMenuView(genre: item.text, icon: item.icon)
+                                        }
+                                    }
+                                }
+                                .frame(maxWidth: .infinity)
+                                .padding()
                                 Text("Games")
                                     .font(.title2.weight(.bold))
                                     .lineLimit(1)
