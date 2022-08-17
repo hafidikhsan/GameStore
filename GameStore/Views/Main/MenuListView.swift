@@ -11,18 +11,11 @@ struct MenuListView: View {
     var genre: String
     var value: String
     @ObservedObject var services = Services()
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     init(genre: String, value: String) {
         self.genre = genre
         self.value = value
         services.status = .initialized
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.backgroundColor = UIColor(Color("PrimaryColor"))
-        navBarAppearance.shadowColor = .clear
-        UINavigationBar.appearance().standardAppearance = navBarAppearance
-        UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
-        UINavigationBar.appearance().tintColor = .white
     }
     var body: some View {
         switch services.status {
@@ -34,7 +27,8 @@ struct MenuListView: View {
             .navigationTitle(genre)
             .navigationBarTitleDisplayMode(.inline)
         case .loaded:
-            ZStack {
+            ZStack(alignment: .top) {
+                Color.white
                 ScrollView {
                     VStack(alignment: .leading) {
                         ForEach(services.menuList!.results, id: \.id) { list in
@@ -44,11 +38,28 @@ struct MenuListView: View {
                         }
                     }
                     .padding(.bottom, 60)
-                    .padding(.top)
+                    .padding(.top, 100)
                 }
+                HStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.backward")
+                            .scaledToFit()
+                            .foregroundColor(.white)
+                    })
+                    Spacer()
+                    Text(genre)
+                        .foregroundColor(.white)
+                        .fontWeight(.bold)
+                }
+                .padding()
+                .frame(height: 80)
+                .frame(maxWidth: .infinity)
+                .background(Color("PrimaryColor"))
             }
             .navigationTitle(genre)
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarHidden(true)
         case .fetching:
             ZStack {
                 Color.white
