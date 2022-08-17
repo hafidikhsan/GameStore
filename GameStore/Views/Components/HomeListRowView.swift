@@ -13,26 +13,35 @@ struct HomeListRowView: View {
         ZStack {
             Color.gray.opacity(0.2)
             HStack(alignment: .top, spacing: 15) {
-                AsyncImage(url: URL(string: game.backgroundImage)) { image in
-                    image.resizable()
-                } placeholder: {
-                    ProgressView()
+                if game.backgroundImage == nil {
+                    Image(systemName: "exclamationmark.circle.fill")
+                        .foregroundColor(Color("PrimaryColor"))
+                } else {
+                    AsyncImage(url: URL(string: game.backgroundImage!)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .scaledToFill()
+                    .frame(width: 80, height: 80)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
                 }
-                .scaledToFill()
-                .frame(width: 80, height: 80)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
                 VStack(alignment: .leading) {
                     Text(game.name)
                         .font(.title3.weight(.bold))
                         .lineLimit(1)
                         .foregroundColor(Color.black)
                     HStack(alignment: .bottom) {
-                        VStack {
-                            Text(game.genres[0].name)
-                                .font(.headline.weight(.medium))
-                                .lineLimit(1)
-                            .foregroundColor(Color.gray)
-                            Spacer()
+                        if game.genres == nil {
+                            EmptyView()
+                        } else {
+                            VStack {
+                                Text(game.genres![0].name)
+                                    .font(.headline.weight(.medium))
+                                    .lineLimit(1)
+                                .foregroundColor(Color.gray)
+                                Spacer()
+                            }
                         }
                         Spacer()
                         ZStack {

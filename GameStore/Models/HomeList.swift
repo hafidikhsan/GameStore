@@ -18,10 +18,10 @@ struct GameList: Codable {
     let id: Int
     let slug: String
     let name: String
-    let released: String
-    let backgroundImage: String
+    let released: String?
+    let backgroundImage: String?
     let rating: Double
-    let genres: [Genres]
+    let genres: [Genres]?
     enum CodingKeys: String, CodingKey {
         case id
         case slug
