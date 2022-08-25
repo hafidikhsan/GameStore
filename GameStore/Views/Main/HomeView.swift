@@ -55,9 +55,11 @@ struct HomeView: View {
                                     .foregroundColor(Color.black)
                                     .padding(.leading)
                                 ForEach(services.homeList!.results, id: \.id) { list in
-                                    HomeListRowView(game: list)
-                                        .padding(.horizontal)
-                                        .padding(.bottom)
+                                    NavigationLink(destination: DetailView(id: list.id)) {
+                                        HomeListRowView(game: list)
+                                            .padding(.horizontal)
+                                            .padding(.bottom)
+                                    }
                                 }
                             }
                             .padding(.bottom, 60)

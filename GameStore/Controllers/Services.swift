@@ -24,6 +24,7 @@ class Services: ObservableObject {
     @Published var homeList: HomeListModel?
     @Published var menuList: HomeListModel?
     @Published var searchList: HomeListModel?
+    @Published var detail: GameDetail?
     var dataFile: Data?
     func getUrlHomeList(endPoint: String) {
         self.status = .fetching
@@ -112,6 +113,32 @@ class Services: ObservableObject {
         let decoder = JSONDecoder()
         if let listData = try? decoder.decode(HomeListModel.self, from: data) as HomeListModel {
             self.searchList = listData
+            self.status = .loaded
+        } else {
+            self.status = .failed
+            self.message = "Error, Can't Decode JSON"
+            return
+        }
+    }
+    func getUrlDetail(endPoint: String, value: Int) {
+        self.status = .fetching
+        print(self.url+endPoint+"/"+String(value)+"?key="+self.apiKey)
+        guard let url = URL(string: self.url+endPoint+"/"+String(value)+"?key="+self.apiKey) else {
+            self.status = .failed
+            self.message = "Error while get URL"
+            fatalError("Invalid URL")
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        loadData(request: request) { (teams) in
+            self.dataFile = teams
+            self.decodeToDetailModel(data: teams)
+        }
+    }
+    func decodeToDetailModel(data: Data) {
+        let decoder = JSONDecoder()
+        if let detail = try? decoder.decode(GameDetail.self, from: data) as GameDetail {
+            self.detail = detail
             self.status = .loaded
         } else {
             self.status = .failed
