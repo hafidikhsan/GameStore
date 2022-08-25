@@ -38,6 +38,8 @@ struct DetailView: View {
                             .font(.title2.weight(.bold))
                         Spacer()
                     }
+                    Text(services.detail!.description)
+                        .font(.body.weight(.regular))
                     HStack(alignment: .center) {
                         Image(systemName: "r.square.fill")
                             .resizable()
@@ -67,6 +69,7 @@ struct DetailView: View {
                     }.padding(.top)
                 }
                 .padding()
+                .padding(.bottom, 60)
                 .frame(maxWidth: .infinity)
                 .background(Color.white)
                 .clipShape(RoundedRectangle(cornerRadius: 20))

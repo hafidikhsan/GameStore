@@ -122,7 +122,6 @@ class Services: ObservableObject {
     }
     func getUrlDetail(endPoint: String, value: Int) {
         self.status = .fetching
-        print(self.url+endPoint+"/"+String(value)+"?key="+self.apiKey)
         guard let url = URL(string: self.url+endPoint+"/"+String(value)+"?key="+self.apiKey) else {
             self.status = .failed
             self.message = "Error while get URL"

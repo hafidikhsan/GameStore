@@ -33,7 +33,7 @@ struct MenuListRowView: View {
                         .lineLimit(1)
                         .foregroundColor(Color.black)
                     HStack(alignment: .bottom) {
-                        if (game.genres?.isEmpty) == nil {
+                        if (game.genres?.isEmpty) != nil {
                             EmptyView()
                         } else {
                             VStack {
