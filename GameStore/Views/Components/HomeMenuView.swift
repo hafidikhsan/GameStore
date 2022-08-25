@@ -24,6 +24,7 @@ struct HomeMenuView: View {
             .frame(maxWidth: .infinity)
             .foregroundColor(Color.white)
             Text("\(genre)")
+                .foregroundColor(Color.black)
         }
     }
 }
