@@ -13,15 +13,14 @@ struct DetailView: View {
     init(id: Int) {
         self.id = id
         services.status = .initialized
+        services.getUrlDetail(endPoint: "games", value: self.id)
     }
     var body: some View {
         switch services.status {
         case .initialized:
             ZStack {
-                Color.white
+                Color.red
                 ProgressView()
-            }.task {
-                services.getUrlDetail(endPoint: "games", value: self.id)
             }
         case .loaded:
             ScrollView {
