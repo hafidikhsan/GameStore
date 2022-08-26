@@ -33,15 +33,24 @@ struct MenuListRowView: View {
                         .lineLimit(1)
                         .foregroundColor(Color.black)
                     HStack(alignment: .bottom) {
-                        if (game.genres?.isEmpty) != nil {
+                        if game.genres == nil || game.released == nil {
                             EmptyView()
                         } else {
-                            VStack {
+                            VStack(alignment: .leading) {
                                 Text(game.genres![0].name)
                                     .font(.headline.weight(.medium))
                                     .lineLimit(1)
                                 .foregroundColor(Color.gray)
-                                Spacer()
+                                HStack(alignment: .center) {
+                                    Image(systemName: "r.square.fill")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 15, height: 15)
+                                        .foregroundColor(Color.gray)
+                                    Text(game.released!)
+                                        .font(.headline.weight(.medium))
+                                        .foregroundColor(Color.gray)
+                                }
                             }
                         }
                         Spacer()
