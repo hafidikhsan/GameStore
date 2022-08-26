@@ -25,6 +25,7 @@ struct HomeListRowView: View {
                             .font(.title3.weight(.bold))
                             .lineLimit(1)
                         .foregroundColor(Color.black)
+                        Spacer()
                         HStack(alignment: .center) {
                             Image(systemName: "star.fill")
                                 .resizable()
