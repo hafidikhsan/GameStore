@@ -21,17 +21,29 @@ struct MenuListRowView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                 }
                 VStack(alignment: .leading) {
-                    Text(game.name)
-                        .font(.title3.weight(.bold))
-                        .lineLimit(1)
+                    HStack {
+                        Text(game.name)
+                            .font(.title3.weight(.bold))
+                            .lineLimit(1)
                         .foregroundColor(Color.black)
+                        HStack(alignment: .center) {
+                            Image(systemName: "star.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 15, height: 15)
+                                .foregroundColor(Color.gray)
+                            Text(String(game.rating))
+                                .font(.subheadline.weight(.medium))
+                                .foregroundColor(Color.gray)
+                        }
+                    }
                     HStack(alignment: .bottom) {
                         if game.genres == nil || game.released == nil {
                             EmptyView()
                         } else {
                             VStack(alignment: .leading) {
                                 Text(game.genres![0].name)
-                                    .font(.headline.weight(.medium))
+                                    .font(.subheadline.weight(.medium))
                                     .lineLimit(1)
                                 .foregroundColor(Color.gray)
                                 HStack(alignment: .center) {
@@ -41,7 +53,7 @@ struct MenuListRowView: View {
                                         .frame(width: 15, height: 15)
                                         .foregroundColor(Color.gray)
                                     Text(game.released!)
-                                        .font(.headline.weight(.medium))
+                                        .font(.subheadline.weight(.medium))
                                         .foregroundColor(Color.gray)
                                 }
                             }
