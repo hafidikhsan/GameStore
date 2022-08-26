@@ -1,10 +1,3 @@
-//
-//  DetailModel.swift
-//  GameStore
-//
-//  Created by Hafid Ikhsan Arifin on 24/08/22.
-//
-
 import Foundation
 
 struct DetailModel: Codable {

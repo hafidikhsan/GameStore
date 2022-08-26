@@ -1,10 +1,3 @@
-//
-//  TabBarProperties.swift
-//  GameStore
-//
-//  Created by Hafid Ikhsan Arifin on 12/08/22.
-//
-
 import Foundation
 
 struct TabBarProperties: Identifiable {

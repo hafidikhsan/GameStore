@@ -1,10 +1,3 @@
-//
-//  DetailView.swift
-//  GameStore
-//
-//  Created by Hafid Ikhsan Arifin on 17/08/22.
-//
-
 import SwiftUI
 
 struct DetailView: View {

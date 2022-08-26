@@ -1,10 +1,3 @@
-//
-//  MenuListRowView.swift
-//  GameStore
-//
-//  Created by Hafid Ikhsan Arifin on 16/08/22.
-//
-
 import SwiftUI
 
 struct MenuListRowView: View {

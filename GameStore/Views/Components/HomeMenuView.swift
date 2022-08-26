@@ -1,10 +1,3 @@
-//
-//  HomeMenuView.swift
-//  GameStore
-//
-//  Created by Hafid Ikhsan Arifin on 13/08/22.
-//
-
 import SwiftUI
 
 struct HomeMenuView: View {
