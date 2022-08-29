@@ -46,14 +46,12 @@ struct SearchView: View {
                         } else {
                             VStack(alignment: .leading) {
                                 ForEach(services.searchList!.results, id: \.id) { list in
-                                    NavigationLink(destination: DetailView(id: list.id)) {
-                                        MenuListRowView(game: list)
-                                            .padding(.horizontal)
-                                            .padding(.bottom)
-                                    }
+                                    MenuListRowView(game: list)
+                                        .padding(.horizontal)
+                                        .padding(.bottom)
                                 }
                             }
-                            .padding(.bottom, 60)
+                            .padding(.bottom, 100)
                         }
                     }
                 }.padding(.top, 170)

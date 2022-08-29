@@ -25,11 +25,9 @@ struct MenuListView: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         ForEach(services.menuList!.results, id: \.id) { list in
-                            NavigationLink(destination: DetailView(id: list.id)) {
-                                HomeListRowView(game: list)
-                                    .padding(.horizontal)
-                                    .padding(.bottom)
-                            }
+                            HomeListRowView(game: list)
+                                .padding(.horizontal)
+                                .padding(.bottom)
                         }
                     }
                     .padding(.bottom, 60)

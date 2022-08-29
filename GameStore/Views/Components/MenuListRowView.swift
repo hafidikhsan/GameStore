@@ -5,7 +5,7 @@ struct MenuListRowView: View {
     var body: some View {
         ZStack {
             Color.gray.opacity(0.2)
-            HStack(alignment: .top, spacing: 15) {
+            HStack(alignment: .center, spacing: 15) {
                 if game.backgroundImage == nil {
                     Image(systemName: "exclamationmark.circle.fill")
                         .foregroundColor(Color("PrimaryColor"))
@@ -17,7 +17,7 @@ struct MenuListRowView: View {
                         ProgressView()
                     }
                     .scaledToFill()
-                    .frame(width: 80, height: 80)
+                    .frame(width: 85, height: 85)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                 }
                 VStack(alignment: .leading) {
@@ -43,10 +43,16 @@ struct MenuListRowView: View {
                             EmptyView()
                         } else {
                             VStack(alignment: .leading) {
-                                Text(game.genres![0].name)
-                                    .font(.subheadline.weight(.medium))
-                                    .lineLimit(1)
-                                .foregroundColor(Color.gray)
+                                if let genre = game.genres {
+                                    if genre.isEmpty {
+                                        EmptyView()
+                                    } else {
+                                        Text(genre[0].name)
+                                        .font(.subheadline.weight(.medium))
+                                        .lineLimit(1)
+                                        .foregroundColor(Color.gray)
+                                    }
+                                }
                                 HStack(alignment: .center) {
                                     Image(systemName: "r.square.fill")
                                         .resizable()
@@ -60,14 +66,16 @@ struct MenuListRowView: View {
                             }
                         }
                         Spacer()
-                        ZStack {
-                            Color("PrimaryColor")
-                            Text("Install")
-                                .font(.headline.weight(.medium))
-                                .lineLimit(1)
-                                .foregroundColor(Color.white)
-                        }.frame(width: 100, height: 35)
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                        NavigationLink(destination: DetailView(id: game.id)) {
+                            ZStack {
+                                Color("PrimaryColor")
+                                Text("Detail")
+                                    .font(.headline.weight(.medium))
+                                    .lineLimit(1)
+                                    .foregroundColor(Color.white)
+                            }.frame(width: 100, height: 35)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                        }
                     }.frame(maxHeight: .infinity)
                 }
             }.frame(height: 80).padding()
@@ -85,9 +93,7 @@ struct MenuListRowView_Previews: PreviewProvider {
             released: "Dummy",
             backgroundImage: "Dummy",
             rating: 12,
-            genres: [
-                Genres(id: 1, slug: "Dummy", name: "Dummy")
-            ]
+            genres: nil
         )
         MenuListRowView(game: dummyData)
     }
