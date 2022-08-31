@@ -17,13 +17,22 @@ struct DetailView: View {
             }
         case .loaded:
             ScrollView {
-                AsyncImage(url: URL(string: (services.detail?.backgroundImage)!)) { image in
-                    image.resizable()
-                } placeholder: {
-                    ProgressView()
+                if services.detail?.backgroundImage == nil {
+                    ZStack {
+                        Color("PrimaryColor")
+                        Image(systemName: "exclamationmark.circle.fill")
+                            .foregroundColor(Color.white)
+                    }.frame(height: 300)
+                        .frame(maxWidth: .infinity)
+                } else {
+                    AsyncImage(url: URL(string: (services.detail?.backgroundImage)!)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(height: 300)
+                    .frame(maxWidth: .infinity)
                 }
-                .frame(height: 300)
-                .frame(maxWidth: .infinity)
                 VStack(alignment: .leading) {
                     HStack {
                         Text(services.detail!.name)
@@ -32,15 +41,19 @@ struct DetailView: View {
                     }
                     Text(services.detail!.description)
                         .font(.body.weight(.regular))
-                    HStack(alignment: .center) {
-                        Image(systemName: "r.square.fill")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(Color("PrimaryColor"))
-                        Text(services.detail!.released!)
-                            .font(.headline.weight(.bold))
-                    }.padding(.top)
+                    if services.detail!.released == nil {
+                        EmptyView()
+                    } else {
+                        HStack(alignment: .center) {
+                            Image(systemName: "r.square.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(Color("PrimaryColor"))
+                            Text(services.detail!.released!)
+                                .font(.headline.weight(.bold))
+                        }.padding(.top)
+                    }
                     HStack(alignment: .center) {
                         Image(systemName: "star.square")
                             .resizable()

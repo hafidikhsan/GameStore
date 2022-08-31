@@ -2,6 +2,7 @@ import Foundation
 
 class Services: ObservableObject {
     let url = "https://api.rawg.io/api/"
+    var urlGames = URLComponents(string: "https://api.rawg.io/api/games")!
     private var apiKey: String {
         guard let filePath = Bundle.main.path(forResource: "RAWG-Info", ofType: "plist") else {
           fatalError("Couldn't find file 'Info.plist'.")
@@ -21,12 +22,10 @@ class Services: ObservableObject {
     var dataFile: Data?
     func getUrlHomeList(endPoint: String) {
         self.status = .fetching
-        guard let url = URL(string: self.url+endPoint+"?key="+self.apiKey) else {
-            self.status = .failed
-            self.message = "Error while get URL"
-            fatalError("Invalid URL")
-        }
-        var request = URLRequest(url: url)
+        urlGames.queryItems = [
+            URLQueryItem(name: "key", value: self.apiKey)
+        ]
+        var request = URLRequest(url: urlGames.url!)
         request.httpMethod = "GET"
         loadData(request: request) { (teams) in
             self.dataFile = teams
@@ -65,12 +64,11 @@ class Services: ObservableObject {
     }
     func getUrlMenuList(endPoint: String, value: String) {
         self.status = .fetching
-        guard let url = URL(string: self.url+endPoint+"?genres="+value+"&key="+self.apiKey) else {
-            self.status = .failed
-            self.message = "Error while get URL"
-            fatalError("Invalid URL")
-        }
-        var request = URLRequest(url: url)
+        urlGames.queryItems = [
+            URLQueryItem(name: "genres", value: value),
+            URLQueryItem(name: "key", value: self.apiKey)
+        ]
+        var request = URLRequest(url: urlGames.url!)
         request.httpMethod = "GET"
         loadData(request: request) { (teams) in
             self.dataFile = teams
@@ -90,12 +88,11 @@ class Services: ObservableObject {
     }
     func getUrlSearchList(endPoint: String, value: String) {
         self.status = .fetching
-        guard let url = URL(string: self.url+endPoint+"?search="+value+"&key="+self.apiKey) else {
-            self.status = .failed
-            self.message = "Error while get URL"
-            fatalError("Invalid URL")
-        }
-        var request = URLRequest(url: url)
+        urlGames.queryItems = [
+            URLQueryItem(name: "search", value: value),
+            URLQueryItem(name: "key", value: self.apiKey)
+        ]
+        var request = URLRequest(url: urlGames.url!)
         request.httpMethod = "GET"
         loadData(request: request) { (teams) in
             self.dataFile = teams
@@ -115,12 +112,11 @@ class Services: ObservableObject {
     }
     func getUrlDetail(endPoint: String, value: Int) {
         self.status = .fetching
-        guard let url = URL(string: self.url+endPoint+"/"+String(value)+"?key="+self.apiKey) else {
-            self.status = .failed
-            self.message = "Error while get URL"
-            fatalError("Invalid URL")
-        }
-        var request = URLRequest(url: url)
+        var components = URLComponents(string: "https://api.rawg.io/api/games/"+String(value))!
+        components.queryItems = [
+            URLQueryItem(name: "key", value: self.apiKey)
+        ]
+        var request = URLRequest(url: components.url!)
         request.httpMethod = "GET"
         loadData(request: request) { (teams) in
             self.dataFile = teams
