@@ -49,7 +49,7 @@ struct MenuListView: View {
                 .padding()
                 .frame(height: 80)
                 .frame(maxWidth: .infinity)
-                .background(Color("PrimaryColor"))
+                .background(Color.primaryColor)
             }
             .navigationTitle(genre)
             .navigationBarHidden(true)

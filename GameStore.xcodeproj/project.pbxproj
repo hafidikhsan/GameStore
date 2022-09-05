@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A605EC4628AB48E00006FC1A /* MenuListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A605EC4528AB48E00006FC1A /* MenuListView.swift */; };
+		A60ACC9B28C32EAA00C78A55 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60ACC9A28C32EAA00C78A55 /* Color.swift */; };
+		A60ACC9E28C34ACF00C78A55 /* Favourite.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A60ACC9C28C34ACF00C78A55 /* Favourite.xcdatamodeld */; };
+		A60ACCA128C5BFDF00C78A55 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60ACCA028C5BFDF00C78A55 /* DataController.swift */; };
+		A60ACCA328C5D7B700C78A55 /* FavouriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60ACCA228C5D7B700C78A55 /* FavouriteView.swift */; };
+		A60ACCA728C5DA1800C78A55 /* FavouriteListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60ACCA628C5DA1800C78A55 /* FavouriteListRowView.swift */; };
 		A64BE2AF28AA2F8900FE4F20 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64BE2AE28AA2F8900FE4F20 /* Menu.swift */; };
 		A64BE2B128AA2FE500FE4F20 /* MenuProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64BE2B028AA2FE500FE4F20 /* MenuProperties.swift */; };
 		A64BE2B328AA344B00FE4F20 /* HomeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64BE2B228AA344B00FE4F20 /* HomeList.swift */; };
@@ -35,6 +40,11 @@
 
 /* Begin PBXFileReference section */
 		A605EC4528AB48E00006FC1A /* MenuListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListView.swift; sourceTree = "<group>"; };
+		A60ACC9A28C32EAA00C78A55 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		A60ACC9D28C34ACF00C78A55 /* Favourite.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Favourite.xcdatamodel; sourceTree = "<group>"; };
+		A60ACCA028C5BFDF00C78A55 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		A60ACCA228C5D7B700C78A55 /* FavouriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteView.swift; sourceTree = "<group>"; };
+		A60ACCA628C5DA1800C78A55 /* FavouriteListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteListRowView.swift; sourceTree = "<group>"; };
 		A64BE2AE28AA2F8900FE4F20 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		A64BE2B028AA2FE500FE4F20 /* MenuProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuProperties.swift; sourceTree = "<group>"; };
 		A64BE2B228AA344B00FE4F20 /* HomeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeList.swift; sourceTree = "<group>"; };
@@ -72,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A60ACC9928C32E8200C78A55 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A60ACC9A28C32EAA00C78A55 /* Color.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		A6F56C8228A6530D001D340A = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +114,7 @@
 				A6F56C9D28A65371001D340A /* Models */,
 				A6F56C9C28A65363001D340A /* Views */,
 				A6F56C8E28A6530D001D340A /* GameStoreApp.swift */,
+				A60ACC9C28C34ACF00C78A55 /* Favourite.xcdatamodeld */,
 				A6F56C9228A65310001D340A /* Assets.xcassets */,
 				A6F56C9428A65310001D340A /* Preview Content */,
 				A64BE2BB28AA837A00FE4F20 /* RAWG-Info.plist */,
@@ -133,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				A64BE2B428AA49DD00FE4F20 /* Services.swift */,
+				A60ACCA028C5BFDF00C78A55 /* DataController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -147,6 +167,7 @@
 				A6F56CA828A6863E001D340A /* TabBarView.swift */,
 				A605EC4528AB48E00006FC1A /* MenuListView.swift */,
 				A654888828ACCF8D00493F44 /* DetailView.swift */,
+				A60ACCA228C5D7B700C78A55 /* FavouriteView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -158,6 +179,7 @@
 				A6E3027828A77B23002EC475 /* HomeMenuView.swift */,
 				A6E3027A28A77BF9002EC475 /* HomeListRowView.swift */,
 				A6C0639728ABFE21000D530C /* MenuListRowView.swift */,
+				A60ACCA628C5DA1800C78A55 /* FavouriteListRowView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -165,6 +187,7 @@
 		A6F56CAA28A69F8B001D340A /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				A60ACC9928C32E8200C78A55 /* Extension */,
 				A6F56CB128A6B0D5001D340A /* ShapeHelper */,
 				A6F56CAE28A6A1C2001D340A /* Identifiable */,
 				A6F56CAB28A69F98001D340A /* Enum */,
@@ -299,12 +322,17 @@
 				A6F56CB028A6A1D5001D340A /* TabBarProperties.swift in Sources */,
 				A6E3027728A773EA002EC475 /* HomeBackgroundView.swift in Sources */,
 				A6E3027928A77B23002EC475 /* HomeMenuView.swift in Sources */,
+				A60ACCA328C5D7B700C78A55 /* FavouriteView.swift in Sources */,
 				A64BE2B328AA344B00FE4F20 /* HomeList.swift in Sources */,
 				A6F56C9128A6530D001D340A /* ContentView.swift in Sources */,
 				A6A20EAB28B61EAD009A102B /* DetailModel.swift in Sources */,
 				A6F56CB328A6B0F7001D340A /* CustomRounded.swift in Sources */,
 				A605EC4628AB48E00006FC1A /* MenuListView.swift in Sources */,
 				A6F56C8F28A6530D001D340A /* GameStoreApp.swift in Sources */,
+				A60ACCA128C5BFDF00C78A55 /* DataController.swift in Sources */,
+				A60ACCA728C5DA1800C78A55 /* FavouriteListRowView.swift in Sources */,
+				A60ACC9E28C34ACF00C78A55 /* Favourite.xcdatamodeld in Sources */,
+				A60ACC9B28C32EAA00C78A55 /* Color.swift in Sources */,
 				A64BE2AF28AA2F8900FE4F20 /* Menu.swift in Sources */,
 				A654888928ACCF8D00493F44 /* DetailView.swift in Sources */,
 				A6F56CA928A6863E001D340A /* TabBarView.swift in Sources */,
@@ -515,6 +543,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A60ACC9C28C34ACF00C78A55 /* Favourite.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A60ACC9D28C34ACF00C78A55 /* Favourite.xcdatamodel */,
+			);
+			currentVersion = A60ACC9D28C34ACF00C78A55 /* Favourite.xcdatamodel */;
+			path = Favourite.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A6F56C8328A6530D001D340A /* Project object */;
 }

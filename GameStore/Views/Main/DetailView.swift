@@ -1,12 +1,22 @@
 import SwiftUI
 
 struct DetailView: View {
+    @Environment(\.managedObjectContext) var managedObjContext
+    @Environment(\.dismiss) var dismiss
     var id: Int
     @ObservedObject var services = Services()
     init(id: Int) {
         self.id = id
         services.status = .initialized
         services.getUrlDetail(endPoint: "games", value: self.id)
+    }
+    @FetchRequest(sortDescriptors: []) var favourite: FetchedResults<Favorite>
+    @State var isFav: Bool = false
+    private func deleteFav(id: Int) {
+        for item in favourite where item.id == id {
+            managedObjContext.delete(item)
+            DataController.shared.saveFav(context: managedObjContext)
+        }
     }
     var body: some View {
         switch services.status {
@@ -19,7 +29,7 @@ struct DetailView: View {
             ScrollView {
                 if services.detail?.backgroundImage == nil {
                     ZStack {
-                        Color("PrimaryColor")
+                        Color.primaryColor
                         Image(systemName: "exclamationmark.circle.fill")
                             .foregroundColor(Color.white)
                     }.frame(height: 300)
@@ -38,6 +48,26 @@ struct DetailView: View {
                         Text(services.detail!.name)
                             .font(.title2.weight(.bold))
                         Spacer()
+                        if isFav {Image(systemName: "heart.fill")
+                            .foregroundColor(Color.primaryColor)
+                            .onTapGesture {
+                                deleteFav(id: (services.detail?.id)!)
+                                isFav = !isFav
+                            }
+                        } else {
+                        Image(systemName: "heart")
+                            .foregroundColor(Color.primaryColor)
+                            .onTapGesture {
+                                DataController.shared.addFav(
+                                    id: (services.detail?.id)!,
+                                    name: (services.detail?.name)!,
+                                    image: services.detail?.backgroundImage,
+                                    realesed: services.detail?.released ?? "",
+                                    rating: services.detail!.rating,
+                                    context: managedObjContext)
+                                isFav = !isFav
+                            }
+                        }
                     }
                     Text(services.detail!.description)
                         .font(.body.weight(.regular))
@@ -49,7 +79,7 @@ struct DetailView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 20, height: 20)
-                                .foregroundColor(Color("PrimaryColor"))
+                                .foregroundColor(Color.primaryColor)
                             Text(services.detail!.released!)
                                 .font(.headline.weight(.bold))
                         }.padding(.top)
@@ -59,7 +89,7 @@ struct DetailView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 20, height: 20)
-                            .foregroundColor(Color("PrimaryColor"))
+                            .foregroundColor(Color.primaryColor)
                         Text(String(services.detail!.rating))
                             .font(.headline.weight(.bold))
                     }.padding(.top)
@@ -68,7 +98,7 @@ struct DetailView: View {
                             .resizable()
                             .scaledToFit()
                             .frame(width: 20, height: 20)
-                            .foregroundColor(Color("PrimaryColor"))
+                            .foregroundColor(Color.primaryColor)
                         Text(services.detail!.website)
                             .font(.headline.weight(.bold))
                     }.padding(.top)
@@ -82,6 +112,11 @@ struct DetailView: View {
             }.ignoresSafeArea()
                 .navigationTitle(services.detail!.name)
                 .navigationBarTitleDisplayMode(.inline)
+                .onAppear {
+                    for item in favourite where item.id == services.detail!.id {
+                        isFav = true
+                    }
+                }
         case .failed:
             ZStack {
                 Color.white

@@ -5,7 +5,7 @@ struct AccountView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 ZStack(alignment: .top) {
-                    Color("PrimaryColor").frame(height: 150)
+                    Color.primaryColor.frame(height: 150)
                     VStack {
                         Spacer().frame(height: 80)
                         Image("HafidIkhsanArifin")
@@ -23,8 +23,6 @@ struct AccountView: View {
                             .padding(.bottom)
                     }
                 }
-                .navigationTitle("About Me")
-                .navigationBarTitleDisplayMode(.inline)
             }
         }
     }
