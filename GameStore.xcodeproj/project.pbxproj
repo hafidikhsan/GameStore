@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A605EC4628AB48E00006FC1A /* MenuListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A605EC4528AB48E00006FC1A /* MenuListView.swift */; };
+		A609C0BC28C64CCD00533A76 /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A609C0BB28C64CCD00533A76 /* FavoriteModel.swift */; };
 		A60ACC9B28C32EAA00C78A55 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60ACC9A28C32EAA00C78A55 /* Color.swift */; };
 		A60ACC9E28C34ACF00C78A55 /* Favourite.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A60ACC9C28C34ACF00C78A55 /* Favourite.xcdatamodeld */; };
 		A60ACCA128C5BFDF00C78A55 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60ACCA028C5BFDF00C78A55 /* DataController.swift */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		A605EC4528AB48E00006FC1A /* MenuListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListView.swift; sourceTree = "<group>"; };
+		A609C0BB28C64CCD00533A76 /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 		A60ACC9A28C32EAA00C78A55 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		A60ACC9D28C34ACF00C78A55 /* Favourite.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Favourite.xcdatamodel; sourceTree = "<group>"; };
 		A60ACCA028C5BFDF00C78A55 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 			children = (
 				A64BE2B228AA344B00FE4F20 /* HomeList.swift */,
 				A6A20EAA28B61EAD009A102B /* DetailModel.swift */,
+				A609C0BB28C64CCD00533A76 /* FavoriteModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				A6F56CA328A68593001D340A /* HomeView.swift in Sources */,
 				A6F56CB028A6A1D5001D340A /* TabBarProperties.swift in Sources */,
 				A6E3027728A773EA002EC475 /* HomeBackgroundView.swift in Sources */,
+				A609C0BC28C64CCD00533A76 /* FavoriteModel.swift in Sources */,
 				A6E3027928A77B23002EC475 /* HomeMenuView.swift in Sources */,
 				A60ACCA328C5D7B700C78A55 /* FavouriteView.swift in Sources */,
 				A64BE2B328AA344B00FE4F20 /* HomeList.swift in Sources */,

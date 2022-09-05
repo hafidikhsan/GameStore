@@ -49,24 +49,25 @@ struct DetailView: View {
                             .font(.title2.weight(.bold))
                         Spacer()
                         if isFav {Image(systemName: "heart.fill")
-                            .foregroundColor(Color.primaryColor)
-                            .onTapGesture {
-                                deleteFav(id: (services.detail?.id)!)
-                                isFav = !isFav
-                            }
+                                .foregroundColor(Color.primaryColor)
+                                .onTapGesture {
+                                    deleteFav(id: (services.detail?.id)!)
+                                    isFav = !isFav
+                                }
                         } else {
-                        Image(systemName: "heart")
-                            .foregroundColor(Color.primaryColor)
-                            .onTapGesture {
-                                DataController.shared.addFav(
-                                    id: (services.detail?.id)!,
-                                    name: (services.detail?.name)!,
-                                    image: services.detail?.backgroundImage,
-                                    realesed: services.detail?.released ?? "",
-                                    rating: services.detail!.rating,
-                                    context: managedObjContext)
-                                isFav = !isFav
-                            }
+                            Image(systemName: "heart")
+                                .foregroundColor(Color.primaryColor)
+                                .onTapGesture {
+                                    DataController.shared.addFav(
+                                        favorite: FavoriteModel(
+                                            id: (services.detail?.id)!,
+                                            name: (services.detail?.name)!,
+                                            released: services.detail?.released ?? "",
+                                            backgroundImage: services.detail?.backgroundImage,
+                                            rating: services.detail!.rating),
+                                        context: managedObjContext)
+                                    isFav = !isFav
+                                }
                         }
                     }
                     Text(services.detail!.description)

@@ -20,7 +20,6 @@ struct HomeBackgroundView: View {
 
 struct HomeBackgroundView_Previews: PreviewProvider {
     static var previews: some View {
-//        HomeBackgroundView()
         HomeBackgroundView(zoomValue: .constant(0.0))
     }
 }

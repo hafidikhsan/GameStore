@@ -1,10 +1,3 @@
-//
-//  FavouriteListRowView.swift
-//  GameStore
-//
-//  Created by Hafid Ikhsan Arifin on 05/09/22.
-//
-
 import SwiftUI
 
 struct FavouriteListRowView: View {
